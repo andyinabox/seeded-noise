@@ -1,6 +1,6 @@
 {
   "name": "seeded-noise",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple wrapper library for seeded random and simplex noise",
   "main": "index.js",
   "type": "module",
