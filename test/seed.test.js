@@ -38,15 +38,15 @@ describe('seed', function() {
 
   it('produces different noise value when same seed and different input are used', function() {
     const rng1 = new SeededNoise('test');
-    const rando1 = rng1.noise([1, 2, 3]);
     const rng2 = new SeededNoise('test');
-    const rando2 = rng2.noise([1, 2, 4]);
-    assert.notEqual(rando2, rando1);
+    assert.notEqual(rng1.noise([1, 2, 3]), rng2.noise([1, 2, 4]));
   })
 
   it('produces different noise value when different seed and same input are used', function() {
     const rng1 = new SeededNoise('test');
-    const rng2 = new SeededNoise('different');
-    assert.notEqual(rng1.noise([1, 2, 3, 4]), rng2.noise([1, 2, 3, 4]));
+    const rng2 = new SeededNoise('different seed');
+    assert.notEqual(rng1.noise([1, 50]), rng2.noise([1, 2]));
+    assert.notEqual(rng1.noise([1, 50, 100]), rng2.noise([1, 50, 100]));
+    assert.notEqual(rng1.noise([1, 50, 100, 500]), rng2.noise([1, 50, 100, 500]));
   })
 })
