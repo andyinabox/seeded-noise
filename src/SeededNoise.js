@@ -15,10 +15,11 @@ export class SeededNoise {
     return this.#seed
   }
 
-  set seed(v) {
-    this.#rng = seedrandom(v)
-    this.#simplex = new SimplexNoise(this.rng)
-    this.#seed = v
+  set seed(seed) {
+    const rng = seedrandom(seed)
+    this.#simplex = new SimplexNoise(rng)
+    this.#rng = rng;
+    this.#seed = seed;
   }
 
   #random(rand, min, max) {

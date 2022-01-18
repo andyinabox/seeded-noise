@@ -5,9 +5,9 @@ import { SeededNoise } from "../src/SeededNoise.js";
 const rng = new SeededNoise();
 const tries = 50;
 
-describe("random", () => {
+describe("random", function() {
 
-  it('returns unique random values between 0 and 1', () => {
+  it('returns unique random values between 0 and 1', function() {
     const nums = new Set();
 
     // add random numbers to set
@@ -24,7 +24,7 @@ describe("random", () => {
     }
   });
 
-  it('returns unique random values between 0 and 5', () => {
+  it('returns unique random values between 0 and 5', function() {
     const nums = new Set();
 
     // add random numbers to set
@@ -41,7 +41,7 @@ describe("random", () => {
     }
   });
 
-  it('returns unique random values between 5 and 10', () => {
+  it('returns unique random values between 5 and 10', function() {
     const nums = new Set();
 
     // add random numbers to set
