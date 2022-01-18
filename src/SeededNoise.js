@@ -58,9 +58,7 @@ export class SeededNoise {
     // by default simplex-noise gives us a value from -1 to 1
     // map to be between 0 and 1 for consistency
     const rand = (noiseFn(...c) + 1) / 2;
-
     
-
     return this.#random(rand, min, max)
   }
 
