@@ -35,10 +35,8 @@ let rando2 = rng2.random();
 
 The constructor takes 2 arguments:
 
- - `seed` _(optional)_ will set the seed value for all random numbers. Default is 1.
+ - `seed` _(optional)_ will set the seed value for all random numbers. Default is the result of `Math.random()`.
  - `scale` _(optional)_ sets a default value for the noise scale. Default is 1.
-
- > **Note:** because the `seed` value defaults to 1, calling the constructor with no arguments will create in instance that always yields the same results!
 
 ### `random([min], [max])`
 

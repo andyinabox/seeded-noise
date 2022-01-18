@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "A simple wrapper library for seeded random and simplex noise",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
   "dependencies": {
     "seedrandom": "^3.0.5",
     "simplex-noise": "^3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.4"
   }
 }
