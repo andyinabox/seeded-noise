@@ -1,5 +1,4 @@
-// import { describe, it, expect, beforeEach, afterEach } from "concise-test";
-import assert from 'assert';
+import { assert } from 'chai';
 
 import { SeededNoise } from "../src/SeededNoise.js";
 import { SimplexNoise } from "simplex-noise";
@@ -9,67 +8,48 @@ const tries = 50;
 
 describe("noise", () => {
 
-  it('simplex-noise returns unique random values', () => {
-    const simplex = new SimplexNoise();
+
+  it('returns identical values when given identical input', () => {
     const nums = new Set();
 
     // add random numbers to set
     for (let i = 0; i < tries; i++) {
-      nums.add(simplex.noise3D(1, 2, 3));
+      nums.add(rng.noise([1, 2, 3]))
     }
 
-    // if unique, this will be true
-    assert.equal(nums.size, tries)
+    assert.equal(nums.size, 1);
   });
 
-//   it('returns unique random values between 0 and 1', () => {
-//     const nums = new Set();
+  it('returns noise values between 0 and 1 when given different input', () => {
+    const nums = new Set();
+    let rand;
+    // add random numbers to set
+    for (let i = 0; i < tries; i++) {
+      rand = rng.noise([1, 2, i]);
+      assert.isAtLeast(rand, 0);
+      assert.isAtMost(rand, 1);
+    }
+  });
 
-//     // add random numbers to set
-//     for (let i = 0; i < tries; i++) {
-//       nums.add(rng.noise([1, 2, 3]))
-//     }
+  it('returns noise values between 0 and 5 when given different input', () => {
+    const nums = new Set();
+    let rand;
+    // add random numbers to set
+    for (let i = 0; i < tries; i++) {
+      rand = rng.noise([1, 2, i], 5);
+      assert.isAtLeast(rand, 0);
+      assert.isAtMost(rand, 5);
+    }
+  });
 
-//     // if unique, this will be true
-//     expect(nums.size).toBe(tries)
-
-//     // check value range
-//     for (let n of nums) {
-//       expect(n >= 0 && n <= 1).toBe(true);
-//     }
-//   });
-
-//   it('returns unique random values between 0 and 5', () => {
-//     const nums = new Set();
-
-//     // add random numbers to set
-//     for (let i = 0; i < tries; i++) {
-//       nums.add(rng.noise([1, 2, 3], 5))
-//     }
-
-//     // if unique, this will be true
-//     expect(nums.size).toBe(tries)
-
-//     // check value range
-//     for (let n of nums) {
-//       expect(n >= 0 && n <= 5).toBe(true);
-//     }
-//   });
-
-//   it('returns unique random values between 5 and 10', () => {
-//     const nums = new Set();
-
-//     // add random numbers to set
-//     for (let i = 0; i < tries; i++) {
-//       nums.add(rng.noise([1, 2, 3], 5, 10))
-//     }
-
-//     // if unique, this will be true
-//     expect(nums.size).toBe(tries)
-
-//     // check value range
-//     for (let n of nums) {
-//       expect(n >= 5 && n <= 10).toBe(true);
-//     }
-//   });
+  it('returns noise values between 5 and 10 when given different input', () => {
+    const nums = new Set();
+    let rand;
+    // add random numbers to set
+    for (let i = 0; i < tries; i++) {
+      rand = rng.noise([1, 2, i], 5, 10);
+      assert.isAtLeast(rand, 5);
+      assert.isAtMost(rand, 10);
+    }
+  });
 });

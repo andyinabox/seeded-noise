@@ -1,5 +1,3 @@
-// import { describe, it, expect, beforeEach, afterEach } from "concise-test";
-
 import { SeededNoise } from "../src/SeededNoise.js";
 
 // describe("seed", () => {

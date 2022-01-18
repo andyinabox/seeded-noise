@@ -1,5 +1,5 @@
 import { SeededNoise } from "../src/SeededNoise.js";
-import assert from 'assert';
+import { assert } from 'chai';
 
 const rng = new SeededNoise();
 

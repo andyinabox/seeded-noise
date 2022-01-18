@@ -1,5 +1,4 @@
-// import { describe, it, expect, beforeEach, afterEach } from "concise-test";
-import assert from 'assert';
+import { assert } from 'chai';
 
 import { SeededNoise } from "../src/SeededNoise.js";
 
