@@ -2,9 +2,9 @@ import seedrandom from "seedrandom"
 import SimplexNoise from "simplex-noise"
 
 export class SeededNoise {
-  #seed
-  #simplex
-  #rng
+  _seed;
+  _simplex;
+  _rng;
 
   constructor(seed = Math.random(), scale = 1) {
     this.scale = scale
@@ -12,17 +12,17 @@ export class SeededNoise {
   }
 
   get seed() {
-    return this.#seed
+    return this._seed
   }
 
   set seed(seed) {
     const rng = seedrandom(seed)
-    this.#simplex = new SimplexNoise(rng)
-    this.#rng = rng;
-    this.#seed = seed;
+    this._simplex = new SimplexNoise(rng)
+    this._rng = rng;
+    this._seed = seed;
   }
 
-  #random(rand, min, max) {
+  _random(rand, min, max) {
     if (typeof min !== 'number') {
       return rand
     }
@@ -38,7 +38,7 @@ export class SeededNoise {
   }
 
   random(min, max) {
-    return this.#random(this.#rng(), min, max)
+    return this._random(this._rng(), min, max)
   }
 
   noise(components = [], min, max, scale) {
@@ -60,16 +60,16 @@ export class SeededNoise {
     // map to be between 0 and 1 for consistency
     const rand = (noiseFn(...c) + 1) / 2;
     
-    return this.#random(rand, min, max)
+    return this._random(rand, min, max)
   }
 
   getNoiseFn(n) {
     if (n == 2) {
-      return this.#simplex.noise2D.bind(this.#simplex)
+      return this._simplex.noise2D.bind(this._simplex)
     } else if (n == 3) {
-      return this.#simplex.noise3D.bind(this.#simplex)
+      return this._simplex.noise3D.bind(this._simplex)
     } else if (n == 4) {
-      return this.#simplex.noise4D.bind(this.#simplex)
+      return this._simplex.noise4D.bind(this._simplex)
     } else {
       throw new Error('invalid number of noise components: '+n)
     }
